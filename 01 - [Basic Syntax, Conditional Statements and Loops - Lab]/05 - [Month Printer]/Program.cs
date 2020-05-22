@@ -1,22 +1,33 @@
-﻿using System;
+using System;
 
-namespace MonthPrinter
+namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int monthType = int.Parse(Console.ReadLine());
-            string[] month = { "January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December", };
+            string[] months = {
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"};
 
-            if (monthType > 12 || monthType < 1)
+            int month = int.Parse(Console.ReadLine());
+            if (month <= 12 && month >= 1)
             {
-                Console.WriteLine("Error!");
+                Console.WriteLine(months[month - 1]);
             }
             else
             {
-                Console.WriteLine(month[monthType - 1]);
+                Console.WriteLine("Error!");
             }
         }
     }
