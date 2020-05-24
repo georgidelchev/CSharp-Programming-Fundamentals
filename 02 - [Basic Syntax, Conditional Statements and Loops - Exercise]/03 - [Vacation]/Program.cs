@@ -1,82 +1,78 @@
-﻿using System;
+using System;
 
-namespace Vacation
+namespace ConsoleApp3
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int groupNumber = int.Parse(Console.ReadLine());
+            int peopleGroup = int.Parse(Console.ReadLine());
             string groupType = Console.ReadLine();
-            string dayOfTheWeek = Console.ReadLine();
+            string day = Console.ReadLine();
 
-            double discount = 0;
-            double sumPerOne = 0;
+            double totalPrice = 0;
             if (groupType == "Students")
             {
-                if (dayOfTheWeek == "Friday")
+                if (day == "Friday")
                 {
-                    sumPerOne = 8.45;
+                    totalPrice = 8.45 * peopleGroup;
                 }
-                else if (dayOfTheWeek == "Saturday")
+                else if (day == "Saturday")
                 {
-                    sumPerOne = 9.80;
+                    totalPrice = 9.80 * peopleGroup;
                 }
-                else if (dayOfTheWeek == "Sunday")
+                else if (day == "Sunday")
                 {
-                    sumPerOne = 10.46;
+                    totalPrice = 10.46 * peopleGroup;
                 }
 
-                if (groupNumber >= 30)
+                if (peopleGroup >= 30)
                 {
-                    discount = 0.15;
+                    totalPrice -= totalPrice * 0.15;
                 }
             }
             else if (groupType == "Business")
             {
-                if (dayOfTheWeek == "Friday")
+                if (peopleGroup >= 100)
                 {
-                    sumPerOne = 10.90;
-                }
-                else if (dayOfTheWeek == "Saturday")
-                {
-                    sumPerOne = 15.60;
-                }
-                else if (dayOfTheWeek == "Sunday")
-                {
-                    sumPerOne = 16.00;
+                    peopleGroup -= 10;
                 }
 
-                if (groupNumber >= 100)
+                if (day == "Friday")
                 {
-                    groupNumber -= 10;
+                    totalPrice = 10.90 * peopleGroup;
+                }
+                else if (day == "Saturday")
+                {
+                    totalPrice = 15.60 * peopleGroup;
+                }
+                else if (day == "Sunday")
+                {
+                    totalPrice = 16 * peopleGroup;
                 }
             }
             else if (groupType == "Regular")
             {
-                if (dayOfTheWeek == "Friday")
+                if (day == "Friday")
                 {
-                    sumPerOne = 15.00;
+                    totalPrice = 15 * peopleGroup;
                 }
-                else if (dayOfTheWeek == "Saturday")
+                else if (day == "Saturday")
                 {
-                    sumPerOne = 20.00;
+                    totalPrice = 20 * peopleGroup;
                 }
-                else if (dayOfTheWeek == "Sunday")
+                else if (day == "Sunday")
                 {
-                    sumPerOne = 22.50;
+                    totalPrice = 22.50 * peopleGroup;
                 }
 
-                if (groupNumber >= 10 && groupNumber <= 20)
+                if (peopleGroup >= 10 && peopleGroup <= 20)
                 {
-                    discount = 0.05;
+                    totalPrice -= totalPrice * 0.05;
                 }
             }
 
-            double totalSum = sumPerOne * groupNumber;
-            totalSum = totalSum - (totalSum * discount);
-
-            Console.WriteLine($"Total price: {totalSum:f2}");
+            Console.WriteLine($"Total price: {totalPrice:f2}");
         }
     }
 }
