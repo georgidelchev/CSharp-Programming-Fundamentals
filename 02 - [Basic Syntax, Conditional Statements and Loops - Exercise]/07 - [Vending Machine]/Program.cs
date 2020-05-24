@@ -1,103 +1,71 @@
-﻿using System;
+using System;
 
-namespace VendingMachine
+namespace Login
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double sum = 0;
             string input = Console.ReadLine();
+            double totalSum = 0;
             while (input != "Start")
             {
-                double coinsInsert = double.Parse(input);
-                if (coinsInsert == 0.1 || coinsInsert == 0.2 || coinsInsert == 0.5
-                    || coinsInsert == 1 || coinsInsert == 2)
+                double coins = double.Parse(input);
+                if (coins == 0.1 || coins == 0.2 || coins == 0.5 || coins == 1 || coins == 2)
                 {
-                    sum += coinsInsert;
+                    totalSum += coins;
                 }
                 else
                 {
-                    Console.WriteLine($"Cannot accept {coinsInsert}");
+                    Console.WriteLine($"Cannot accept {coins}");
                 }
                 input = Console.ReadLine();
             }
-            double nutsPrice = 2.0;
-            double waterPrice = 0.7;
-            double crispsPrice = 1.5;
-            double sodaPrice = 0.8;
-            double cokePrice = 1.0;
 
             string product = Console.ReadLine();
+            double price = 0;
             while (product != "End")
             {
+                bool flag = true;
                 if (product == "Nuts")
                 {
-                    if (sum >= nutsPrice)
-                    {
-                        Console.WriteLine($"Purchased {product.ToLower()}");
-                        sum -= nutsPrice;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry, not enough money");
-                    }
+                    price = 2;
                 }
                 else if (product == "Water")
                 {
-                    if (sum >= waterPrice)
-                    {
-                        Console.WriteLine($"Purchased {product.ToLower()}");
-                        sum -= waterPrice;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry, not enough money");
-                    }
+                    price = 0.7;
                 }
                 else if (product == "Crisps")
                 {
-                    if (sum >= crispsPrice)
-                    {
-                        Console.WriteLine($"Purchased {product.ToLower()}");
-                        sum -= crispsPrice;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry, not enough money");
-                    }
+                    price = 1.5;
                 }
                 else if (product == "Soda")
                 {
-                    if (sum >= sodaPrice)
-                    {
-                        Console.WriteLine($"Purchased {product.ToLower()}");
-                        sum -= sodaPrice;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry, not enough money");
-                    }
+                    price = 0.8;
                 }
                 else if (product == "Coke")
                 {
-                    if (sum >= cokePrice)
-                    {
-                        Console.WriteLine($"Purchased {product.ToLower()}");
-                        sum -= cokePrice;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Sorry, not enough money");
-                    }
+                    price = 1;
                 }
                 else
                 {
                     Console.WriteLine("Invalid product");
+                    flag = false;
+                }
+
+                if (totalSum >= price && flag)
+                {
+                    Console.WriteLine($"Purchased {product.ToLower()}");
+                    totalSum -= price;
+                }
+                else if (flag)
+                {
+                    Console.WriteLine("Sorry, not enough money");
                 }
                 product = Console.ReadLine();
             }
-            Console.WriteLine($"Change: {sum:f2}");
+
+            Console.WriteLine($"Change: {totalSum:f2}");
         }
     }
 }
