@@ -25,8 +25,8 @@ namespace Orders
                     dict.Add(productName, new double[2]);
                 }
 
-                dict[productName][0]= productPrice;
-                dict[productName][1]+= productQty;
+                dict[productName][0] = productPrice;
+                dict[productName][1] += productQty;
             }
 
             Console.WriteLine(string.Join(Environment.NewLine, dict
